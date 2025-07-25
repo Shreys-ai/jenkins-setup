@@ -11,19 +11,17 @@ job('run-greed-assignment') {
 
     steps {
         shell '''
-        export PATH="/Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin:$PATH"
-
         echo "✅ Node version:"
-        node -v
+        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/node -v
 
         echo "✅ NPM version:"
-        npm -v
+        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/npm -v
 
         echo "📦 Installing dependencies"
-        npm install
+        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/npm install
 
         echo "🚀 Running the app"
-        npm run start
+        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/npm run start
         '''
     }
 }
