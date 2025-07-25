@@ -1,1 +1,0 @@
-jobDsl targets: '/Users/shreyasdhoke/.jenkins/workspace/seed-job/jenkins/jobs/*.groovy'

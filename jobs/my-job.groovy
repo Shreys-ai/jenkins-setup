@@ -1,18 +1,16 @@
-pipelineJob('tasks-pipeline') {
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        url('https://github.com/Shreys-ai/Greed_Assignment.git')
-                    }
-                    branches('*/main')
-                }
-            }
-        }
+job('run-greed-assignment') {
+    description('Runs Greed Assignment tests on GitHub push')
+
+    scm {
+        git('https://github.com/Shreys-ai/Greed_Assignment.git', 'main')
     }
 
     triggers {
-        githubPush()  // ✅ THIS is what listens on /github-webhook/
+        githubPush() // requires GitHub webhook to be set up
+    }
+
+    steps {
+        shell('npm install')
+        shell('npm test')
     }
 }
