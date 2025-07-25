@@ -17,11 +17,8 @@ job('run-greed-assignment') {
     echo '✅ NPM version:'
     npm -v
 
-    echo '📦 Installing dependencies...'
-    npm install
-
     echo '🚀 Starting app...'
-    npm start
+    npx nightwatch
 """.stripIndent())
 
     }
