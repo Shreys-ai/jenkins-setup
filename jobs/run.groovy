@@ -10,16 +10,16 @@ job('run-greed-assignment') {
     }
 
     steps {
-            shell("""
-    echo '✅ Node version:'
-    node -v
+        shell("""
+            echo 'Node version:'
+            node -v
 
-    echo '✅ NPM version:'
-    npm -v
+            echo 'NPM version:'
+            npm -v
 
-    echo '🚀 Starting app...'
-    npx nightwatch
-""".stripIndent())
+            echo '🚀 Starting app...'
+            npx nightwatch  
+            """.stripIndent())
 
     }
 }
