@@ -10,18 +10,20 @@ job('run-greed-assignment') {
     }
 
     steps {
-        shell '''
-        echo "✅ Node version:"
-        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/node -v
+            shell("""
+        export PATH=/Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin:\$PATH
 
-        echo "✅ NPM version:"
-        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/npm -v
+        echo '✅ Node version:'
+        node -v
 
-        echo "📦 Installing dependencies"
-        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/npm install
+        echo '✅ NPM version:'
+        npm -v
 
-        echo "🚀 Running the app"
-        /Users/shreyasdhoke/.nvm/versions/node/v22.17.1/bin/npm run start
-        '''
+        echo '📦 Installing dependencies...'
+        npm install
+
+        echo '🚀 Running app...'
+        npm start
+    """.stripIndent())
     }
 }
