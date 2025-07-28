@@ -28,9 +28,10 @@ job('run-greed-assignment') {
             echo "Access Key: \$BROWSERSTACK_ACCESS_KEY"
 
             echo 'Running tests on BrowserStack Chrome Windows...'
-
             npm ci
             npx nightwatch --env browserstack.chrome
+
+            node generate-report.js
         """.stripIndent())
     }
 }
