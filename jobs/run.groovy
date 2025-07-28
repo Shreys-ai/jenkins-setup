@@ -6,7 +6,13 @@ job('run-greed-assignment') {
     }
 
     triggers {
-        githubPush() // requires GitHub webhook to be set up
+        githubPush()
+    }
+
+    wrappers {
+        credentialsBinding {
+            usernamePassword('BROWSERSTACK_USERNAME', 'BROWSERSTACK_ACCESS_KEY', 'browserstack-creds')
+        }
     }
 
     steps {
@@ -17,9 +23,12 @@ job('run-greed-assignment') {
             echo 'NPM version:'
             npm -v
 
-            echo '🚀 Starting app...'
-            npx nightwatch  
-            """.stripIndent())
+            echo '🚀 Running Nightwatch tests on BrowserStack...'
+            
+            export BROWSERSTACK_USERNAME=$BROWSERSTACK_USERNAME
+            export BROWSERSTACK_ACCESS_KEY=$BROWSERSTACK_ACCESS_KEY
 
+            npx nightwatch --env browserstack.chrome
+        """.stripIndent())
     }
 }
