@@ -11,7 +11,7 @@ job('run-greed-assignment') {
 
     wrappers {
         credentialsBinding {
-            usernamePassword('BROWSERSTACK_USERNAME', 'BROWSERSTACK_ACCESS_KEY', 'browserstack-creds')
+            usernamePassword('BROWSERSTACK_USERNAME', 'BROWSERSTACK_ACCESS_KEY', 'BROWSERSTACK_CREDENTIALS')
         }
     }
 
@@ -23,11 +23,11 @@ job('run-greed-assignment') {
             echo 'NPM version:'
             npm -v
 
-            echo '🚀 Running Nightwatch tests on BrowserStack...'
-            
-            export BROWSERSTACK_USERNAME=$BROWSERSTACK_USERNAME
-            export BROWSERSTACK_ACCESS_KEY=$BROWSERSTACK_ACCESS_KEY
+            echo '🌐 Using BrowserStack credentials from Jenkins...'
+            echo "Username: \$BROWSERSTACK_USERNAME"
+            echo "Access Key: \$BROWSERSTACK_ACCESS_KEY"
 
+            echo '🚀 Running tests on BrowserStack Chrome Windows...'
             npx nightwatch --env browserstack.chrome
         """.stripIndent())
     }
