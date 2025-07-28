@@ -23,11 +23,13 @@ job('run-greed-assignment') {
             echo 'NPM version:'
             npm -v
 
-            echo '🌐 Using BrowserStack credentials from Jenkins...'
+            echo 'Printing BrowserStack credentials from Jenkins...'
             echo "Username: \$BROWSERSTACK_USERNAME"
             echo "Access Key: \$BROWSERSTACK_ACCESS_KEY"
 
-            echo '🚀 Running tests on BrowserStack Chrome Windows...'
+            echo 'Running tests on BrowserStack Chrome Windows...'
+
+            npm ci
             npx nightwatch --env browserstack.chrome
         """.stripIndent())
     }
